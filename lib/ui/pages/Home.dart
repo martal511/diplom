@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
                   child: RaisedButton(
                 child: Text("Моя комната"),
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/dialoglogin');
+                 Navigator.of(context).pushNamed('/dialoglogin');
                 },
               )),
             ],
