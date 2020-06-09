@@ -1,9 +1,10 @@
 import 'package:diplom/ui/pages/BasicProgramming.dart';
-import 'package:diplom/ui/pages/DialogAutorization.dart';
+import 'package:diplom/ui/pages/Autorization.dart';
 import 'package:diplom/ui/pages/Home.dart';
 import 'package:diplom/ui/pages/RoomStudent.dart';
 import 'package:diplom/ui/pages/RoomTeacher.dart';
 import 'package:diplom/ui/pages/Team.dart';
+import 'package:diplom/ui/pages/registration.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/basicprogramming':(BuildContext context) => BasicProgramming(),
         '/team':(BuildContext context) => Team(),
         '/dialoglogin':(BuildContext context) => DialogLogin(),
+        '/registration':(BuildContext context) => Registration(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

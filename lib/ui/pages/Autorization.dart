@@ -42,6 +42,17 @@ class _DialogLoginState extends State<DialogLogin> {
                     ),
                   ),
                 ),
+                Container(
+                  height: 50,
+                  child: Center(
+                    child: RaisedButton(
+                      child: Text('Регистрация'),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/registration');
+                      },
+                    ),
+                  ),
+                )
               ],
             ),
           ),
