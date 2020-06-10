@@ -3,7 +3,8 @@ import 'package:diplom/ui/pages/Autorization.dart';
 import 'package:diplom/ui/pages/Home.dart';
 import 'package:diplom/ui/pages/RoomStudent.dart';
 import 'package:diplom/ui/pages/RoomTeacher.dart';
-import 'package:diplom/ui/pages/Team.dart';
+import 'package:diplom/ui/pages/TeamStudent.dart';
+import 'package:diplom/ui/pages/TeamTeacher.dart';
 import 'package:diplom/ui/pages/registration.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         '/roomstudent':(BuildContext context) => RoomStudent(),
         '/roomteacher':(BuildContext context) => RoomTeacher(),
         '/basicprogramming':(BuildContext context) => BasicProgramming(),
-        '/team':(BuildContext context) => Team(),
+        '/teamteacher':(BuildContext context) => TeamTeacher(),
+        '/teamstudent':(BuildContext context) => TeamStudent(),
         '/dialoglogin':(BuildContext context) => DialogLogin(),
         '/registration':(BuildContext context) => Registration(),
       },

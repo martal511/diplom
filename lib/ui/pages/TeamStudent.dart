@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
+class TeamStudent extends StatefulWidget{
   @override
-  _HomeState createState() => _HomeState();
+  _TeamStudentState createState() => _TeamStudentState();
 }
 
-class _HomeState extends State<Home> {
-
-
-
-
-
-
+class _TeamStudentState extends State<TeamStudent> {
   @override
   Widget build(BuildContext context) {
     String _dropdownValue;
-    List<String> _dropdownValues = ["Алгоритмы", "Циклы", "Методы"];
+    List <String> _dropdownValues = ["Алгоритмы","Циклы","Методы"];
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -48,7 +42,7 @@ class _HomeState extends State<Home> {
                 child: RaisedButton(
                   child: Text("Команда"),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/teamstudent');
+                    Navigator.of(context).pushNamed('/team');
                   },
                 ),
               ),
@@ -62,15 +56,26 @@ class _HomeState extends State<Home> {
               ),
               Expanded(
                   child: RaisedButton(
-                child: Text("Моя комната"),
-                onPressed: () {
-                 Navigator.of(context).pushNamed('/dialoglogin');
-                },
-              )),
+                    child: Text("Моя комната"),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/dialoglogin');
+                    },
+                  )),
             ],
           ),
         ),
       ),
+      body: Row(
+        children: <Widget>[
+          Container(
+            height: 50,
+            width: 50,
+            child: Text('ФОТО'),
+          ),
+          Text('Ученик'),
+        ],
+      ),
     );
+
   }
 }

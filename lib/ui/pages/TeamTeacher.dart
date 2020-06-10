@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Team extends StatefulWidget{
+class TeamTeacher extends StatefulWidget{
   @override
-  _TeamState createState() => _TeamState();
+  _TeamTeacherState createState() => _TeamTeacherState();
 }
 
-class _TeamState extends State<Team> {
+class _TeamTeacherState extends State<TeamTeacher> {
   @override
   Widget build(BuildContext context) {
     String _dropdownValue;
@@ -65,6 +65,16 @@ class _TeamState extends State<Team> {
           ),
         ),
       ),
+        body: Row(
+          children: <Widget>[
+            Container(
+              height: 50,
+              width: 50,
+              child: Text('ФОТО'),
+            ),
+            Text('Преподаватель'),
+          ],
+        )
     );
 
   }
