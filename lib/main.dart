@@ -9,6 +9,7 @@ import 'package:diplom/ui/pages/RoomStudent.dart';
 import 'package:diplom/ui/pages/RoomTeacher.dart';
 import 'package:diplom/ui/pages/TeamStudent.dart';
 import 'package:diplom/ui/pages/TeamTeacher.dart';
+import 'package:diplom/ui/pages/newUserRoom.dart';
 import 'package:diplom/ui/pages/registration.dart';
 import 'package:firebase/firebase.dart';
 import 'package:firebase/firestore.dart';
@@ -26,6 +27,8 @@ bool isDarkTheme = false;
 SharedPreferences prefs;
 Map <String, dynamic> curUser;
 Map <String, dynamic> userData;
+Map <String, dynamic> userDataBase;
+User userFB;
 
 
 Future<void> main() async {
@@ -76,6 +79,7 @@ class MyApp extends StatelessWidget {
         '/registration':(BuildContext context) => Registration(),
         '/profile':(BuildContext context) => ProfilePage(),
         '/editprofile':(BuildContext context) => EditProfilePage(),
+        '/newuserroom':(BuildContext context) => NewUserRoom(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

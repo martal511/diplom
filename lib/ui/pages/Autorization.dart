@@ -69,6 +69,14 @@ class AuthService {
         if (webFirebaseUser != null) {
           //User is already logged in
           blIsSignedIn = true;
+          userData =  {
+            "id": webFirebaseUser.uid,
+            "name" : webFirebaseUser.displayName,
+            "phoneNumber" :  webFirebaseUser.phoneNumber,
+          };
+          curUser = userData;
+          userFB = webFirebaseUser;
+
         } else {
           blIsSignedIn = false;
         }
@@ -241,8 +249,33 @@ class _DialogLoginState extends State<DialogLogin> {
                               },
                             );
                           } else {
-                            //Navigate to the Homescreen
-                            Navigator.pushNamed(context, '/roomstudent');
+                            userFB = user;
+
+                            store.collection("users").doc(userFB.uid).get().then((value){
+                              if (value.data() == null || value.data().isEmpty) {
+                                store.collection("users").doc(userFB.uid).set({
+                                  "name": userFB.displayName,
+                                  "phone" : userFB.phoneNumber,
+                                  "email":  userFB.email,
+                                  "role" : "user"
+                                }).then((value) => Navigator.pushNamed(context, '/editprofile'));
+
+                              } else {
+                                userDataBase = value.data();
+                                if ( userDataBase["role"] == "teacher") {
+                                  Navigator.pushNamed(context, '/roomteacher');
+                                } else if (userDataBase["role"] == "student") {
+                                  Navigator.pushNamed(context, '/roomstudent');
+
+                                } else {
+                                  Navigator.pushNamed(context, '/newuserroom');
+                                }                    
+
+                              }
+                            });
+
+
+
                           }
                         });
                       },
