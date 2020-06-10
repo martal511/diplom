@@ -5,6 +5,12 @@ import 'myDropdownButton.dart';
 
 AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
   return AppBar(
+    actions: <Widget>[
+      FlatButton(onPressed: () {
+        Navigator.of(context).pushNamed("/profile");
+      },
+      child: Icon( Icons.account_circle),)
+    ],
     title: Container(
       height: 30,
       child: Row(

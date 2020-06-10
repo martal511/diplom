@@ -2,7 +2,9 @@ import 'package:diplom/themes/custom_theme.dart';
 import 'package:diplom/themes/themes.dart';
 import 'package:diplom/ui/pages/BasicProgramming.dart';
 import 'package:diplom/ui/pages/Autorization.dart';
+import 'package:diplom/ui/pages/EditProfilePage.dart';
 import 'package:diplom/ui/pages/Home.dart';
+import 'package:diplom/ui/pages/ProfilePage.dart';
 import 'package:diplom/ui/pages/RoomStudent.dart';
 import 'package:diplom/ui/pages/RoomTeacher.dart';
 import 'package:diplom/ui/pages/TeamStudent.dart';
@@ -72,6 +74,8 @@ class MyApp extends StatelessWidget {
         '/teamstudent':(BuildContext context) => TeamStudent(),
         '/dialoglogin':(BuildContext context) => DialogLogin(),
         '/registration':(BuildContext context) => Registration(),
+        '/profile':(BuildContext context) => ProfilePage(),
+        '/editprofile':(BuildContext context) => EditProfilePage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
