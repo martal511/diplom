@@ -9,10 +9,10 @@ class MyThemes {
 
   static final ThemeData lightThemeFcNnFonts = ThemeData(
 
-    primaryColor: maingazpromsilver,
+    primaryColor: mainappbarblue,
     primaryColorDark: maingazpromsilver,
     backgroundColor: maingazpromsilver,
-    accentColor: maingazpromblue,
+    accentColor:  maingazpromorange,
     scaffoldBackgroundColor: Colors.white,
     dialogBackgroundColor: Colors.orange,
     brightness: Brightness.light,
@@ -28,8 +28,8 @@ class MyThemes {
         fontFamily: "DinPro",
       ),
       bodyText2:TextStyle(
-          color: maingazprom,
-          fontSize: 15,
+          color: maintextwhite,
+          fontSize: 16,
           fontFamily: "Helious",
           letterSpacing: 1.1),
 
@@ -55,10 +55,11 @@ class MyThemes {
           letterSpacing: 1.1),
 
 
+
       // боковое меню  Веделенное текст и цвет иконок
       headline3: TextStyle(
           color: Colors.white,
-          fontSize: 18,
+          fontSize: 14,
           fontFamily: "Helious",
           letterSpacing: 1.1),
       headline2: TextStyle(
@@ -75,6 +76,8 @@ class MyThemes {
         labelColor: activbottombariconlight,
         unselectedLabelColor: noactivbottombariconlight),
   );
+
+
 
 
 

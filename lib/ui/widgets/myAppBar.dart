@@ -7,6 +7,7 @@ import 'myDropdownButton.dart';
 
 AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
   return AppBar(
+    backgroundColor: Theme.of(context).primaryColor,
     actions: <Widget>[
       FlatButton(onPressed: () {
         Navigator.of(context).pushNamed("/profile");
@@ -26,7 +27,9 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
           ),
           Expanded(
             child: RaisedButton(
-              child: Text("Команда"),
+              color: Theme.of(context).primaryColor,
+              hoverColor:  Theme.of(context).accentColor,
+              child: Text("Команда" , style: Theme.of(context).textTheme.bodyText2),
               onPressed: () {
                 Navigator.of(context).pushNamed('/teamstudent');
               },
@@ -34,7 +37,7 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
           ),
           Expanded(
             child: RaisedButton(
-              child: Text("Дом"),
+              child: Text("Дом", style: Theme.of(context).textTheme.bodyText2),
               onPressed: () {
                 Navigator.of(context).pushNamed('/');
               },
@@ -42,7 +45,7 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
           ),
           Expanded(
               child: RaisedButton(
-                child: Text("Моя комната"),
+                child: Text("Моя комната", style: Theme.of(context).textTheme.bodyText2),
                 onPressed: () {
                   authService = new AuthService();
                   authService.checkIsSignedIn().then((_isSignedIn)  {

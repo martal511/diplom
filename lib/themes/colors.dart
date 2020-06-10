@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 //газпром
 const maingazprom = const Color(0xFF0070BA);
+
 const maingazpromblue = const Color(0xFF2FB4E9);
 const maingazpromlightblue = const Color(0xFF0097D8);
 const maingazpromdarkblue = const Color(0xFF004077);
@@ -10,6 +11,11 @@ const maingazprombiryze = const Color(0xFF3FBFAD);
 const maingazpromorange = const Color(0xFFF38B00);
 const maingazpromgreen = const Color(0xFF91993E);
 const maingazpromsilver = const Color(0xFFB2B2B2);
+
+//Основные цвета
+const mainappbarblue = const Color(0xFF8C9EFF);
+const maintextwhite = const Color(0xFFF5F5F5);
+
 
 //Светлая тема
 const mainbackgroundlight = const Color(0xFF0070BA); //основной задний фон бади и апп бар

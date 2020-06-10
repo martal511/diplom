@@ -9,8 +9,7 @@ class TeamStudent extends StatefulWidget{
 class _TeamStudentState extends State<TeamStudent> {
   @override
   Widget build(BuildContext context) {
-    String _dropdownValue;
-    List <String> _dropdownValues = ["Алгоритмы","Циклы","Методы"];
+
     return Scaffold(
       appBar: buildAppBar(context),
       body: Row(
@@ -18,9 +17,9 @@ class _TeamStudentState extends State<TeamStudent> {
           Container(
             height: 50,
             width: 50,
-            child: Text('ФОТО'),
+            child: Text('ФОТО ', style: Theme.of(context).textTheme.bodyText1,),
           ),
-          Text('Ученик'),
+          Text('Ученик', ),
         ],
       ),
     );
