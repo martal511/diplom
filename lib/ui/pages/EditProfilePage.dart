@@ -1,4 +1,5 @@
 
+import 'package:diplom/main.dart';
 import 'package:diplom/ui/widgets/MyCard.dart';
 import 'package:diplom/ui/widgets/RaisedGradientButton.dart';
 import 'package:diplom/ui/widgets/TextFieldPadding.dart';
@@ -28,9 +29,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   TextEditingController _bornDateTFC = TextEditingController();
 
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  FirebaseUser user;
+
+
   DocumentSnapshot dsuser;
   Map dBuser;
   String photoURL;
@@ -40,16 +41,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
   bool isEmailValid = false;
 
   Future getCurrentUser() async {
-    FirebaseUser _user = await firebaseAuth.currentUser();
-    user = _user;
+
+
     store
         .collection("users")
-        .doc(_user.uid)
+        .doc(userFB.uid)
         .onSnapshot
         .listen((data) {
       setState(() {
-        user = _user;
         dsuser = data;
+        userDataBase = data.data();
       });
     });
   }
@@ -62,7 +63,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   void saveChanges() async {
     await getCurrentUser();
-    store.collection("users").doc(user.uid).set({
+    store.collection("users").doc(userFB.uid).set({
       'time' : ServerValue.TIMESTAMP,
       'name': _nameTFC.text,
       'email': _emailTFC.text,
@@ -91,6 +92,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
           buildMyCardWithPadding(
             Column(
               children: <Widget>[
+                Container ( padding: EdgeInsets.all(20.0) ,
+                  child: Text( "Профиль " + ((userDataBase["role"] == "teacher") ? "учителя" : "ученика")),),
+
                 FlatButton (
                   child: Container(
                   margin: EdgeInsets.all(26),

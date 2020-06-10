@@ -8,21 +8,31 @@ class NewUserRoom extends StatelessWidget {
     // TODO: implement build
    return Scaffold(
      appBar: buildAppBar(context),
-     body: Container(
-       padding: EdgeInsets.all(20.0),
-       child: Column ( children: <Widget> [
-             Container     (
-               child: Text("Здравствуй, " +  userDataBase['name'] + " У вас нет еще своей компанты в нашей школе,  что бы ее создать, нужно пройти полную регистрацию :") ,
-             ),
-              FlatButton ( child: Text ("Я учитель"),  onPressed: ( ) {
+     body: Center(
+       child: Container(
+         padding: EdgeInsets.all(20.0),
+         child: Column ( mainAxisAlignment: MainAxisAlignment.spaceAround,
+             crossAxisAlignment: CrossAxisAlignment.center,
+             children: <Widget> [
+               Center(
+                 child: Container     (
+                   child: Text("Здравствуй, " +  userDataBase['name'] + " У вас нет еще своей компанты в нашей школе,  что бы ее создать, нужно пройти полную регистрацию :") ,
+                 ),
+               ),
+                FlatButton ( child: Text ("Я учитель"),  onPressed: ( ) {
+                  store.collection("users").doc(userFB.uid).update(data: {
+                    "role" : "teacher"
+                  }).then((value) => Navigator.pushNamed(context, "/editprofile"));
+                },),
+           FlatButton ( child: Text ("Я ученик"),  onPressed: ( ) {
+             store.collection("users").doc(userFB.uid).update(data: {
+               "role" : "student"
+             }).then((value) => Navigator.pushNamed(context, "/editprofile"));
+           },)
 
-              },),
-         FlatButton ( child: Text ("Я ученик"),  onPressed: ( ) {
 
-         },)
-
-
-       ]
+         ]
+         ),
        ),
      ),
    );

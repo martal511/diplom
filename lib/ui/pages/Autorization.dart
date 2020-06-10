@@ -31,18 +31,7 @@ WebFirestore.Firestore webFirestore = WebFirebase.firestore();
 
 class AuthService {
   // constructor
-  AuthService() {
-    checkIsSignedIn().then((_blIsSignedIn) {
-      //redirect to appropriate screen
-      if(_blIsSignedIn) {
 
-      }
-      else {
-
-
-      }
-    });
-  }
 
   //Checks if the user has signed in
   Future<bool> checkIsSignedIn() async {
@@ -76,6 +65,8 @@ class AuthService {
           };
           curUser = userData;
           userFB = webFirebaseUser;
+
+
 
         } else {
           blIsSignedIn = false;
@@ -185,7 +176,7 @@ class _DialogLoginState extends State<DialogLogin> {
   @override
   void initState() {
     //Call the Class constructor and initialize the object
-    authService = new AuthService();
+
 
     super.initState();
   }
@@ -258,7 +249,7 @@ class _DialogLoginState extends State<DialogLogin> {
                                   "phone" : userFB.phoneNumber,
                                   "email":  userFB.email,
                                   "role" : "user"
-                                }).then((value) => Navigator.pushNamed(context, '/editprofile'));
+                                }).then((value) => Navigator.pushNamed(context, '/newuserroom'));
 
                               } else {
                                 userDataBase = value.data();
@@ -269,8 +260,7 @@ class _DialogLoginState extends State<DialogLogin> {
 
                                 } else {
                                   Navigator.pushNamed(context, '/newuserroom');
-                                }                    
-
+                                }
                               }
                             });
 
