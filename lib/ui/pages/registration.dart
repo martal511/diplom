@@ -1,5 +1,6 @@
 
 
+import 'package:diplom/ui/widgets/myAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class Registration extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:  buildAppBar(context),
       body: Center(
         child: Container(
           child: new Form(

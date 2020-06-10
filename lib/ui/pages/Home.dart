@@ -1,3 +1,8 @@
+import 'package:diplom/data.dart';
+import 'package:diplom/main.dart';
+import 'package:diplom/ui/widgets/myAppBar.dart';
+import 'package:diplom/ui/widgets/myDropdownButton.dart';
+import 'package:firebase/firestore.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -6,71 +11,24 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    store.collection("lections").onSnapshot.listen((event) {
+      if (event.docs.isNotEmpty) {
+        setState(() {
+          lectionsDataDocs = event.docs;
+        });
+      }
+    });
 
-
-
-
-
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    String _dropdownValue;
-    List<String> _dropdownValues = ["Алгоритмы", "Циклы", "Методы"];
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          height: 30,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Expanded(flex: 2,
-                child: DropdownButton(
-                    hint: Text('Основы программирования'),
-                    elevation: 0,
-                    value: _dropdownValue,
-                    items: _dropdownValues.map((String value) {
-                      return DropdownMenuItem(
-                        value: value,
-                        child: Row(
-                          children: <Widget>[
-                            Text('${value}'),
-                          ],
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: (String value) {
-                      _dropdownValues;
-                    }),
-              ),
-              Expanded(
-                child: RaisedButton(
-                  child: Text("Команда"),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/teamstudent');
-                  },
-                ),
-              ),
-              Expanded(
-                child: RaisedButton(
-                  child: Text("Дом"),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/');
-                  },
-                ),
-              ),
-              Expanded(
-                  child: RaisedButton(
-                child: Text("Моя комната"),
-                onPressed: () {
-                 Navigator.of(context).pushNamed('/dialoglogin');
-                },
-              )),
-            ],
-          ),
-        ),
-      ),
+      appBar: buildAppBar(context),
     );
   }
+
 }

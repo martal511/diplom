@@ -6,12 +6,14 @@ import 'package:diplom/ui/pages/RoomTeacher.dart';
 import 'package:diplom/ui/pages/TeamStudent.dart';
 import 'package:diplom/ui/pages/TeamTeacher.dart';
 import 'package:diplom/ui/pages/registration.dart';
+import 'package:firebase/firebase.dart';
+import 'package:firebase/firestore.dart';
 import 'package:flutter/material.dart';
 
 
 AuthService authService;
 bool blIsSignedIn = false;
-
+Firestore store = firestore();
 
 
 

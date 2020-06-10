@@ -1,3 +1,4 @@
+import 'package:diplom/ui/widgets/myAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase/firebase.dart' as WebFirebase;
 import 'package:firebase/firestore.dart' as WebFirestore;
@@ -189,6 +190,7 @@ class _DialogLoginState extends State<DialogLogin> {
     TextEditingController controllerPassword = TextEditingController();
     final  _formKey = GlobalKey<FormState>();
     return Scaffold(
+      appBar:  buildAppBar(context),
       body: Center(
         child: Container(
           child: new Form(
