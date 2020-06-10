@@ -30,7 +30,7 @@ class _LectionPageState extends State<LectionPage> {
         child: ListView (
           children: <Widget>[
             Container( padding: EdgeInsets.all(20.0),
-              child: Text(lectionMap['title'], textAlign: TextAlign.center,
+              child: Text(lectionMap['title'], textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline3,
               ),),
             Container (
               height: 200,

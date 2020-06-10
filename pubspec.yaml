@@ -37,6 +37,8 @@ dependencies:
   date_format: ^1.0.8
   flutter_swiper: ^1.1.6
   url_launcher: ^5.4.1
+  shared_preferences: 0.5.6+1
+  intl: ^0.16.1
 
   simple_animations: ^1.1.3
 
@@ -57,7 +59,25 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+
+  fonts:
+    - family: Helious
+      fonts:
+        - asset: fonts/heliousreg.ttf
+    - family: HeliousBold
+      fonts:
+        - asset: fonts/heliosbold.ttf
+    - family: DinPro
+      fonts:
+        - asset: fonts/DINPro.ttf
+        - asset: fonts/DINPro-Medium.ttf
+        - asset: fonts/DINPro-Bold.ttf
+    - family: MyFlutterApp
+      fonts:
+        - asset: fonts/MyFlutterApp.ttf
   uses-material-design: true
+  assets:
+    - assets/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -1,3 +1,5 @@
+import 'package:diplom/themes/custom_theme.dart';
+import 'package:diplom/themes/themes.dart';
 import 'package:diplom/ui/pages/BasicProgramming.dart';
 import 'package:diplom/ui/pages/Autorization.dart';
 import 'package:diplom/ui/pages/Home.dart';
@@ -9,16 +11,50 @@ import 'package:diplom/ui/pages/registration.dart';
 import 'package:firebase/firebase.dart';
 import 'package:firebase/firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 AuthService authService;
 bool blIsSignedIn = false;
 Firestore store = firestore();
+bool isDarkTheme = false;
 
 
+SharedPreferences prefs;
+Map <String, dynamic> curUser;
+Map <String, dynamic> userData;
 
-void main() {
-  runApp(MyApp());
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferences.getInstance().then((value) {
+    prefs = value;
+    if (prefs != null && prefs.get("isDarkTeme")!= null) {
+      isDarkTheme = prefs.get("isDarkTeme");
+    }
+    if  (prefs != null && prefs.get("userDataList")!= null)
+    {
+      List <dynamic> userDataList = prefs.get("userDataList");
+      curUser = {
+        "id": userDataList[0],
+        "api_token":     userDataList[1],
+        "name" : userDataList[2],
+        "phoneNumber" : userDataList[3],
+        "role" : userDataList[4],
+      };
+      userData = curUser;
+    } else {
+    }
+  });
+
+  isDarkTheme = isDarkTheme == null? false : isDarkTheme;
+  initializeDateFormatting().then((_) => runApp(
+    CustomTheme(
+      initialThemeKey: isDarkTheme? MyThemeKeys.DARKFC : MyThemeKeys.LIGHTFC,
+      child: MyApp(),
+    ),
+  ));
 }
 
 
