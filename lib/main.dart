@@ -7,9 +7,17 @@ import 'package:diplom/ui/pages/Team.dart';
 import 'package:diplom/ui/pages/registration.dart';
 import 'package:flutter/material.dart';
 
+
+AuthService authService;
+bool blIsSignedIn = false;
+
+
+
+
 void main() {
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   @override

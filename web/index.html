@@ -18,16 +18,32 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+<script>
+    // TODO: Replace the following with your app's Firebase project configuration.
+    // See: https://support.google.com/firebase/answer/7015592
+    var firebaseConfig = {
+    apiKey: "AIzaSyAA8qCaypYzgzVPo4Gh7qbkeLwPLw7fh6o",
+    authDomain: "diplom-ff938.firebaseapp.com",
+    databaseURL: "https://diplom-ff938.firebaseio.com",
+    projectId: "diplom-ff938",
+    storageBucket: "diplom-ff938.appspot.com",
+    messagingSenderId: "577102866401",
+    appId: "1:577102866401:web:fa85c96ca3f4a8fc1194a0",
+    measurementId: "G-BFPK7V3NN4"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+<script src="main.dart.js" type="application/javascript"></script>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js');
-      });
-    }
-  </script>
-  <script src="main.dart.js" type="application/javascript"></script>
+
 </body>
 </html>
