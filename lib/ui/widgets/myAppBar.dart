@@ -47,6 +47,7 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
                   authService = new AuthService();
                   authService.checkIsSignedIn().then((_isSignedIn)  {
                     if (_isSignedIn) {
+
                       store.collection("users").doc(userFB.uid).get().then((
                           value) {
                         if (value.data() == null || value

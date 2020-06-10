@@ -10,16 +10,18 @@ class RoomTeacher extends StatefulWidget{
 }
 
 class _RoomTeacherState extends State<RoomTeacher> {
-  String _dropdownValue;
-  List <String> _dropdownValues = ["Алгоритмы","Циклы","Методы"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:  buildAppBar(context),
-      body: Container ( margin: EdgeInsets.all(20.0),
+      body: Container (
+        height: 400,
+        width: 800,
+        margin: EdgeInsets.all(20.0),
         child:  Row (children: <Widget>[
           Expanded(child:  classesColumn( context),),
-          Expanded(child: null,),
+          Expanded(child: Container(),),
 
         ],
 
@@ -31,6 +33,8 @@ class _RoomTeacherState extends State<RoomTeacher> {
 
  Widget classesColumn(BuildContext context) {
     return  Container(
+      height: 400,
+      width: 800,
       child:  Column( children: <Widget>[
         Container ( padding:  EdgeInsets.all(20.0), child:  Text ( " Ученики"),),
         FlatButton (onPressed: () {
