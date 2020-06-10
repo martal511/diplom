@@ -47,39 +47,42 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
               child: RaisedButton(
                 child: Text("Моя комната", style: Theme.of(context).textTheme.bodyText2),
                 onPressed: () {
-                  authService = new AuthService();
-                  authService.checkIsSignedIn().then((_isSignedIn)  {
-                    if (_isSignedIn) {
-
-                      store.collection("users").doc(userFB.uid).get().then((
-                          value) {
-                        if (value.data() == null || value
-                            .data()
-                            .isEmpty) {
-                          store.collection("users").doc(userFB.uid).set({
-                            "name": userFB.displayName,
-                            "phone": userFB.phoneNumber,
-                            "email": userFB.email,
-                            "role": "user"
-                          }).then((value) =>
-                              Navigator.pushNamed(context, '/newuserroom'));
-                        } else {
-                          userDataBase = value.data();
-                          if (userDataBase["role"] == "teacher") {
-                            Navigator.pushNamed(context, '/roomteacher');
-                          } else if (userDataBase["role"] == "student") {
-                            Navigator.pushNamed(context, '/roomstudent');
+                  if (isReleaseVersion) {
+                    authService = new AuthService();
+                    authService.checkIsSignedIn().then((_isSignedIn) {
+                      if (_isSignedIn) {
+                        store.collection("users").doc(getUserId()).get().then((
+                            value) {
+                          if (value.data() == null || value
+                              .data()
+                              .isEmpty) {
+                            store.collection("users").doc(getUserId()).set({
+                              "name": userFB.displayName,
+                              "phone": userFB.phoneNumber,
+                              "email": userFB.email,
+                              "role": "user"
+                            }).then((value) =>
+                                Navigator.pushNamed(context, '/newuserroom'));
                           } else {
-                            Navigator.pushNamed(context, '/newuserroom');
+                            userDataBase = value.data();
+                            if (userDataBase["role"] == "teacher") {
+                              Navigator.pushNamed(context, '/roomteacher');
+                            } else if (userDataBase["role"] == "student") {
+                              Navigator.pushNamed(context, '/roomstudent');
+                            } else {
+                              Navigator.pushNamed(context, '/newuserroom');
+                            }
                           }
-                        }
-                      });
-                    }
-                    else {
-                      Navigator.of(context).pushNamed('/dialoglogin');
-                    }
-                  });
+                        });
+                      }
+                      else {
+                        Navigator.of(context).pushNamed('/dialoglogin');
+                      }
+                    });
+                  }  else {
+                    Navigator.pushNamed(context, '/roomteacher');
 
+                  }
                 },
               )),
         ],

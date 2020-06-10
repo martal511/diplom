@@ -45,7 +45,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
     store
         .collection("users")
-        .doc(userFB.uid)
+        .doc(getUserId())
         .onSnapshot
         .listen((data) {
       setState(() {
@@ -63,7 +63,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   void saveChanges() async {
     await getCurrentUser();
-    store.collection("users").doc(userFB.uid).set({
+    store.collection("users").doc(getUserId()).set({
       'time' : ServerValue.TIMESTAMP,
       'name': _nameTFC.text,
       'email': _emailTFC.text,

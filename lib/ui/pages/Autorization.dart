@@ -242,9 +242,9 @@ class _DialogLoginState extends State<DialogLogin> {
                           } else {
                             userFB = user;
 
-                            store.collection("users").doc(userFB.uid).get().then((value){
+                            store.collection("users").doc(getUserId()).get().then((value){
                               if (value.data() == null || value.data().isEmpty) {
-                                store.collection("users").doc(userFB.uid).set({
+                                store.collection("users").doc(getUserId()).set({
                                   "name": userFB.displayName,
                                   "phone" : userFB.phoneNumber,
                                   "email":  userFB.email,

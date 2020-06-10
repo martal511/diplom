@@ -20,12 +20,12 @@ class NewUserRoom extends StatelessWidget {
                  ),
                ),
                 FlatButton ( child: Text ("Я учитель"),  onPressed: ( ) {
-                  store.collection("users").doc(userFB.uid).update(data: {
+                  store.collection("users").doc(getUserId()).update(data: {
                     "role" : "teacher"
                   }).then((value) => Navigator.pushNamed(context, "/editprofile"));
                 },),
            FlatButton ( child: Text ("Я ученик"),  onPressed: ( ) {
-             store.collection("users").doc(userFB.uid).update(data: {
+             store.collection("users").doc(getUserId()).update(data: {
                "role" : "student"
              }).then((value) => Navigator.pushNamed(context, "/editprofile"));
            },)

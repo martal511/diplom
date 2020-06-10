@@ -23,12 +23,18 @@ bool blIsSignedIn = false;
 Firestore store = firestore();
 bool isDarkTheme = false;
 
-
 SharedPreferences prefs;
 Map <String, dynamic> curUser;
 Map <String, dynamic> userData;
 Map <String, dynamic> userDataBase;
 User userFB;
+
+bool isReleaseVersion = false;
+String debagUserID = "ZyKR4wmcOGYZGAwIzqjoMlrbuUa2";
+String getUserId () {
+  return isReleaseVersion? userFB.uid: debagUserID;
+}
+
 
 
 Future<void> main() async {

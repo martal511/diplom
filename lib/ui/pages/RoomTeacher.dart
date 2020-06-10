@@ -20,7 +20,7 @@ class _RoomTeacherState extends State<RoomTeacher> {
         width: 800,
         margin: EdgeInsets.all(20.0),
         child:  Row (children: <Widget>[
-          Expanded(child:  classesColumn( context),),
+          Expanded(child:  classesColumn(context),),
           Expanded(child: Container(),),
 
         ],
@@ -34,40 +34,45 @@ class _RoomTeacherState extends State<RoomTeacher> {
  Widget classesColumn(BuildContext context) {
     return  Container(
       height: 400,
-      width: 800,
+      width: 400,
       child:  Column( children: <Widget>[
-        Container ( padding:  EdgeInsets.all(20.0), child:  Text ( " Ученики"),),
+        Container ( padding:  EdgeInsets.all(20.0), child:  Text ( " Занятия"),),
         FlatButton (onPressed: () {
 
         },
         child: Text("Показать всех"),),
         Expanded( child:
-          StreamBuilder ( stream: store.collection("classes").where("teacher", "=", userFB.uid).onSnapshot,
-            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-             if ( snapshot.hasData) {
-               List<DocumentSnapshot> classesDataDocs = snapshot.data.docs;
+          Container(
+            height: 300,
+            child: StreamBuilder ( stream: store.collection("classes").where("teacher", "==", getUserId()).onSnapshot,
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+               if ( snapshot.hasData) {
+                 List<DocumentSnapshot> classesDataDocs = snapshot.data.docs;
 
-              return ListView.builder(
-                itemCount: classesDataDocs.length,
-                  itemBuilder: ( context, item) {
+                return ListView.builder(
+                  itemCount: classesDataDocs.length,
+                    itemBuilder: ( context, item) {
 
-                  return Container( child:
-                    Column (
-                      children: <Widget>[
-                        Text( "дата : " + classesDataDocs[item].data()["data"] ),
-                        Text( "студент : " + classesDataDocs[item].data()["student"] ),
-                        Text( "тема : " + classesDataDocs[item].data()["themeName"] ),
+                    return Container(
+                      height: 100,
+                        child:
+                      Column (
+                        children: <Widget>[
+                          Text( "дата : " + classesDataDocs[item].data()["data"].toString() ),
+                          Text( "студент : " + classesDataDocs[item].data()["student"] ),
+                          Text( "тема : " + classesDataDocs[item].data()["themeName"] ),
 
-                      ],
-                    )
-                  );
+                        ],
+                      )
+                    );
 
-                  });
+                    });
 
-             } else {
-               return Container ( child: Text( " нет уроков"),);
-             }
-            },)
+               } else {
+                 return Container ( child: Text( " нет уроков"),);
+               }
+              },),
+          )
           ,)
 
       ],),
