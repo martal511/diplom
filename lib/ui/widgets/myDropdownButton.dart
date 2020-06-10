@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../../data.dart';
 
-DropdownButton<DocumentSnapshot> buildDropdownButton(BuildContext context) {
+DropdownButton<DocumentSnapshot> buildDropdownButton(BuildContext context ,{DocumentSnapshot valueSnapshot}) {
   return DropdownButton(
       hint: Text('Основы программирования'),
       elevation: 0,
-      value: lectionsDataDocs[0],
+      value:     valueSnapshot,
       items: lectionsDataDocs.map((DocumentSnapshot value) {
         return DropdownMenuItem(
           value: value,

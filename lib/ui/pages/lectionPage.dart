@@ -24,7 +24,7 @@ class _LectionPageState extends State<LectionPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( appBar: buildAppBar(context),  body:
+    return Scaffold( appBar: buildAppBar(context, valueSnapshot: widget.lectionData),  body:
       Container(
         padding: EdgeInsets.all(20),
         child: ListView (

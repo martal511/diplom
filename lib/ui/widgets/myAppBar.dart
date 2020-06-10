@@ -1,8 +1,9 @@
+import 'package:firebase/src/firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'myDropdownButton.dart';
 
-AppBar buildAppBar(BuildContext context) {
+AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
   return AppBar(
     title: Container(
       height: 30,
@@ -13,7 +14,7 @@ AppBar buildAppBar(BuildContext context) {
         children: <Widget>[
           Expanded(
             flex: 2,
-            child: buildDropdownButton(context),
+            child: buildDropdownButton(context, valueSnapshot: valueSnapshot),
           ),
           Expanded(
             child: RaisedButton(
