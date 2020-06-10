@@ -35,7 +35,6 @@ class AuthService {
       //redirect to appropriate screen
       if(_blIsSignedIn) {
 
-
       }
       else {
 
