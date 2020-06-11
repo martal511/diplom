@@ -29,7 +29,7 @@ Map <String, dynamic> userData;
 Map <String, dynamic> userDataBase;
 User userFB;
 
-bool isReleaseVersion = false;
+bool isReleaseVersion = false; //ПОСТАВИТЬ true перед деплоем, проверять всегда
 String debagUserID = "ZyKR4wmcOGYZGAwIzqjoMlrbuUa2";
 String getUserId () {
   return isReleaseVersion? userFB.uid: debagUserID;
