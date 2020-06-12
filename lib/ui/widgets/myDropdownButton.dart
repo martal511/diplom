@@ -6,7 +6,12 @@ import '../../data.dart';
 
 DropdownButton<DocumentSnapshot> buildDropdownButton(BuildContext context ,{DocumentSnapshot valueSnapshot}) {
   return DropdownButton(
-      hint: Text('Основы программирования'),
+      hint: Text('Основы программирования', style: TextStyle(
+        color: Colors.indigo[900],
+        fontSize: 24,
+        fontWeight: FontWeight.w500
+
+      ),),
       elevation: 0,
       value:     valueSnapshot,
       items: lectionsDataDocs.map((DocumentSnapshot value) {
@@ -23,5 +28,29 @@ DropdownButton<DocumentSnapshot> buildDropdownButton(BuildContext context ,{Docu
         Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (BuildContext context) {
           return LectionPage( lectionData: value, );
         } ));
+      });
+}
+DropdownButton<DocumentSnapshot> buildDropdownStudentsButton(BuildContext context ,{DocumentSnapshot valueSnapshot}) {
+  return DropdownButton(
+      hint: Text('Ученики', style: TextStyle(
+          color: Colors.indigo[900],
+          fontSize: 24,
+          fontWeight: FontWeight.w500
+
+      ),),
+      elevation: 0,
+      value:     valueSnapshot,
+      items: studentsAllDataDocs.map((DocumentSnapshot value) {
+        return DropdownMenuItem(
+          value: value,
+          child: Row(
+            children: <Widget>[
+              Text('${value.data()['name']}'),
+            ],
+          ),
+        );
+      }).toList(),
+      onChanged: (DocumentSnapshot value) {
+        choosenStudent = value;
       });
 }

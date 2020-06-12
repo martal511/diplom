@@ -20,6 +20,15 @@ class _HomeState extends State<Home> {
         });
       }
     });
+    store.collection("users")
+    .where("role", "==", "student")
+        .onSnapshot.listen((event) {
+      if (event.docs.isNotEmpty) {
+        setState(() {
+          studentsAllDataDocs = event.docs;
+        });
+      }
+    });
 
     super.initState();
   }

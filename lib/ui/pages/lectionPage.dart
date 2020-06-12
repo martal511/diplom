@@ -24,24 +24,44 @@ class _LectionPageState extends State<LectionPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( appBar: buildAppBar(context, valueSnapshot: widget.lectionData),  body:
+    return Scaffold( appBar: buildAppBar(context, valueSnapshot: widget.lectionData), backgroundColor:  Color(0xFFFFD54F), body:
       Container(
         padding: EdgeInsets.all(20),
         child: ListView (
           children: <Widget>[
             Container( padding: EdgeInsets.all(20.0),
-              child: Text(lectionMap['title'], textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline3,
+              child: Text(lectionMap['title'], textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.indigo[800],
+                  fontSize: 32,
+                  fontWeight: FontWeight.w800,
+                      ),
               ),),
-            Container (
-              height: 200,
-              width: 300,
-              color: Colors.red,
-//              decoration: BoxDecoration( image: DecorationImage( )),
-              margin: EdgeInsets.all(20.0),),
-
             Container( padding: EdgeInsets.all(10.0),
               child: Text(lectionMap['text'], textAlign: TextAlign.center,
-              ),)
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.indigo,
+                ),
+              ),),
+            Container(padding: EdgeInsets.all(5.0),
+              height: 700,
+              width: 400,
+
+              child:Image.network(lectionMap['photoURL']
+              ),),
+            Container( padding: EdgeInsets.all(10.0),
+              child: Text(lectionMap['question'], textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.indigo,
+                ),
+              ),),
+
+
+
 
           ],
         ),

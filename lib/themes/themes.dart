@@ -58,7 +58,7 @@ class MyThemes {
 
       // боковое меню  Веделенное текст и цвет иконок
       headline3: TextStyle(
-          color: Colors.white,
+          color: Color(0xff004077),
           fontSize: 14,
           fontFamily: "Helious",
           letterSpacing: 1.1),

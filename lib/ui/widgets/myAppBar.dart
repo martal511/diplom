@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:diplom/ui/pages/Autorization.dart';
 import 'package:firebase/src/firestore.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +9,7 @@ import 'myDropdownButton.dart';
 
 AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
   return AppBar(
-    backgroundColor: Theme.of(context).primaryColor,
+    backgroundColor: Color(0xFF8C9EFF),
     actions: <Widget>[
       FlatButton(onPressed: () {
         Navigator.of(context).pushNamed("/profile");
@@ -27,9 +29,15 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
           ),
           Expanded(
             child: RaisedButton(
-              color: Theme.of(context).primaryColor,
-              hoverColor:  Theme.of(context).accentColor,
-              child: Text("Команда" , style: Theme.of(context).textTheme.bodyText2),
+              color: Colors.indigo,
+              hoverColor: Colors.indigo[400],
+              child: Text("Команда" ,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w300,
+                  )
+              ),
               onPressed: () {
                 Navigator.of(context).pushNamed('/teamstudent');
               },
@@ -37,7 +45,15 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
           ),
           Expanded(
             child: RaisedButton(
-              child: Text("Дом", style: Theme.of(context).textTheme.bodyText2),
+              color: Colors.indigo,
+              hoverColor: Colors.indigo[400],
+              child: Text("Дом",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w300,
+                  )
+              ),
               onPressed: () {
                 Navigator.of(context).pushNamed('/');
               },
@@ -45,7 +61,14 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
           ),
           Expanded(
               child: RaisedButton(
-                child: Text("Моя комната", style: Theme.of(context).textTheme.bodyText2),
+                color: Colors.indigo,
+                hoverColor: Colors.indigo[400],
+                child: Text("Моя комната", style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w300,
+                )
+                ),
                 onPressed: () {
                   if (isReleaseVersion) {
                     authService = new AuthService();
@@ -80,7 +103,7 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
                       }
                     });
                   }  else {
-                    Navigator.pushNamed(context, '/roomteacher');
+                    Navigator.pushNamed(context, '/roomstudent');
 
                   }
                 },
