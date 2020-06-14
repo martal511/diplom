@@ -10,6 +10,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+
 class _HomeState extends State<Home> {
   @override
   void initState() {
@@ -39,15 +40,65 @@ class _HomeState extends State<Home> {
       appBar: buildAppBar(context),
       body:
         Container(
-          padding: EdgeInsets.all(20),
-          width: 1000,
+          width: 2000,
+          height: 1000,
 
-          child: Text("Основы программирования",textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.indigo[800],
-              fontSize: 32,
-              fontWeight: FontWeight.w600,
-            ),),
+
+
+          padding: EdgeInsets.all(20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(5.0),
+                height: 700,
+                width: 500,
+                  alignment: Alignment.topCenter,
+                  child:Image.network("https://firebasestorage.googleapis.com/v0/b/diplom-ff938.appspot.com/o/main%2Fmainimage.png?alt=media&token=0ccd9c80-78bf-4da7-84ad-ae7ddc6c7ce3",
+                  ),
+              ),
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                children:<Widget>[
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child:
+                    Text("Обучение основам программирования",textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.indigo[800],
+                        fontSize: 32,
+                        fontWeight: FontWeight.w600,
+                      ),),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child:
+                    Text("Добро пожаловать, дорогой Друг!\n\nМы находимся на сайте, на котором ты можешь познакомиться с основными понятиями программирования.\nА для желающих обучаться в нашем доме есть индивидуальные комнаты.",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.indigo[600],
+                        fontSize: 26,
+                        fontWeight: FontWeight.w500,
+                      ),),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child:
+                    Text("Программирование - это удивительная возможность воплотить свои идеи в жизнь.\nГлубоко внутри тебе уже известно, как создавать программы.\nТы Творец, а Код - твой помощник. И вы обязательно подружитесь! \n\nМечтай! Твори! Развивайся! ",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.indigo[600],
+                        fontSize: 26,
+                        fontWeight: FontWeight.w500,
+                      ),),
+                  ),
+                ]
+                )
+
+            ],
+          )
+
+
 
         )
     );
