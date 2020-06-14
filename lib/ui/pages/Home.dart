@@ -37,6 +37,19 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
+      body:
+        Container(
+          padding: EdgeInsets.all(20),
+          width: 1000,
+
+          child: Text("Основы программирования",textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.indigo[800],
+              fontSize: 32,
+              fontWeight: FontWeight.w600,
+            ),),
+
+        )
     );
   }
 
