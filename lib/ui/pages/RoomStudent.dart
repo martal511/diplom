@@ -1,6 +1,7 @@
 import 'package:diplom/func/mydb.dart';
 import 'package:diplom/ui/widgets/myAppBar.dart';
 import 'package:firebase/firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
@@ -18,29 +19,109 @@ class _RoomStudentState extends State<RoomStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: buildAppBar(context),
-        body: Center(child: Container(
+        body: Center(child:
+        Container(
           height: 1000,
           width:1500,
-          color: Colors.yellowAccent[100],
+          color: Colors.amber[100],
           margin: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Expanded(
+                flex: 1,
                 child: classesColumn(context),
               ),
               Expanded(
+                flex: 2,
                 child: studentsColumn(context),
               ),
-
             ],
           ),
         ),)
     );
   }
 
+  Widget classesColumn(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration( color: Colors.indigo[50],
+        border: Border.all(
+        color: Colors.yellowAccent[700],
+        width: 4)),
+      height: 1000,
+      width:500,
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(20.0),
+            child: Text("Занятия", style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w500,
+                color: Colors.indigo[900])
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height:800,
+              child: StreamBuilder(
+                stream: store
+                    .collection("classes")
+                    .where("student", "==", getUserId())
+                    .onSnapshot,
+                builder:
+                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                  if (snapshot.hasData) {
+                    List<DocumentSnapshot> classesDataDocs = snapshot.data.docs;
+
+                    return ListView.builder(
+                        itemCount: classesDataDocs.length,
+                        itemBuilder: (context, item) {
+                          return Container(
+                              margin: EdgeInsets.all(5.0),
+                              padding: EdgeInsets.all(5.0),
+                              decoration: BoxDecoration(border: Border.all()),
+                              height: 150,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Text("Дата : " +
+                                      classesDataDocs[item]
+                                          .data()["data"]
+                                          .toString()),
+
+                                  Text("Тема : " +
+                                      classesDataDocs[item]
+                                          .data()["themeName"]),
+                                  Text("Домашнее задание : " +
+                                      classesDataDocs[item].data()["dz"]),
+                                  Text("Статус урока : " +
+                                      classesDataDocs[item]
+                                          .data()["status"]),
+                                ],
+                              ));
+                        });
+                  } else {
+                    return Container(
+                      child: Text(" нет уроков"),
+                    );
+                  }
+                },
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget studentsColumn(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: Colors.indigo[50],
+        border: Border.all(
+        color: Colors.yellowAccent[700],
+        width: 4),),
       height: 1000,
       width: 500,
       child: Column(
@@ -137,9 +218,9 @@ class _RoomStudentState extends State<RoomStudent> {
                             },
                               child: Text("Сохранить",
                                   style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.yellow[900])
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.yellow[900])
                               ),),
                             Expanded(
                               child: Container(
@@ -199,78 +280,6 @@ class _RoomStudentState extends State<RoomStudent> {
                   } else {
                     return Container(
                       child: Text(" нет ответов"),
-                    );
-                  }
-                },
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget classesColumn(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration( border: Border.all()),
-      height: 1000,
-      width:500,
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(20.0),
-            child: Text("Занятия", style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.w500,
-                color: Colors.indigo[900])
-            ),
-          ),
-
-
-          Expanded(
-            child: Container(
-              height:800,
-              child: StreamBuilder(
-                stream: store
-                    .collection("classes")
-                    .where("student", "==", getUserId())
-                    .onSnapshot,
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.hasData) {
-                    List<DocumentSnapshot> classesDataDocs = snapshot.data.docs;
-
-                    return ListView.builder(
-                        itemCount: classesDataDocs.length,
-                        itemBuilder: (context, item) {
-                          return Container(
-                              margin: EdgeInsets.all(8.0),
-                              padding: EdgeInsets.all(8.0),
-
-                              decoration: BoxDecoration(border: Border.all()),
-                              height: 150,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Text("Дата : " +
-                                      classesDataDocs[item]
-                                          .data()["data"]
-                                          .toString()),
-
-                                  Text("Тема : " +
-                                      classesDataDocs[item]
-                                          .data()["themeName"]),
-                                  Text("Домашнее задание : " +
-                                      classesDataDocs[item].data()["dz"]),
-                                  Text("Статус урока : " +
-                                      classesDataDocs[item]
-                                          .data()["status"]),
-                                ],
-                              ));
-                        });
-                  } else {
-                    return Container(
-                      child: Text(" нет уроков"),
                     );
                   }
                 },

@@ -21,8 +21,9 @@ class _RoomTeacherState extends State<RoomTeacher> {
       body: Center(child: Container(
         height: 1000,
         width:1500,
-        color: Colors.indigo[50],
+        color: Colors.amber[100],
         margin: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -33,7 +34,7 @@ class _RoomTeacherState extends State<RoomTeacher> {
               child: classesColumn(context),
             ),
             Expanded(
-              child: Container(),
+              child: lectionColumn(context),
             ),
           ],
         ),
@@ -176,8 +177,6 @@ class _RoomTeacherState extends State<RoomTeacher> {
                     return Dialog(
                       child: Container(
                         padding: EdgeInsets.all(8),
-
-
                         child: Column(
                           children: <Widget>[
                             Container(
@@ -188,9 +187,7 @@ class _RoomTeacherState extends State<RoomTeacher> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.indigo[900]
-
                               ),
-
                               ),
                             ),
                             Container(
@@ -209,7 +206,6 @@ class _RoomTeacherState extends State<RoomTeacher> {
                                     hintText: "Введите тему урока"),
                               ),
                             ),
-
                             Container(
                               width: 400,
                               height: 40,
@@ -242,8 +238,6 @@ class _RoomTeacherState extends State<RoomTeacher> {
                             ),
                             FlatButton (onPressed: () {
 
-
-
                             if(choosenStudent != null) {
                               Map<String, dynamic> newProduct = {
                                 "themeName": themeController.text,
@@ -256,13 +250,12 @@ class _RoomTeacherState extends State<RoomTeacher> {
 
                               addNewDoc(_context, "classes", newProduct,
                                   whenDone: () {
-
                                   });
                             }
 
-
                             },
                             child: Text("Сохранить"),),
+
                             Expanded(
                               child: Container(
                                 child: Column(
@@ -334,4 +327,19 @@ class _RoomTeacherState extends State<RoomTeacher> {
       ),
     );
   }
+
+  Widget lectionColumn(BuildContext context) {
+    return Container(
+        height: 1000,
+        width: 500,
+        child: Column(
+        children: <Widget>[
+        Container(
+
+        )
+        ]
+        ),
+    );
+
+}
 }
