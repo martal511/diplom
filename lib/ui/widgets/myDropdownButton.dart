@@ -9,15 +9,14 @@ DropdownButton<DocumentSnapshot> buildDropdownButton(BuildContext context ,{Docu
       hint: Text('Основы программирования', style: TextStyle(
         color: Colors.indigo[900],
         fontSize: 24,
-        fontWeight: FontWeight.w500
-
+        fontWeight: FontWeight.w500,
       ),),
       elevation: 0,
       value:     valueSnapshot,
       items: lectionsDataDocs.map((DocumentSnapshot value) {
         return DropdownMenuItem(
           value: value,
-          child: Row(
+          child: Column(
             children: <Widget>[
               Text('${value.data()['name']}'),
             ],
