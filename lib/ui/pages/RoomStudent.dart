@@ -23,7 +23,7 @@ class _RoomStudentState extends State<RoomStudent> {
         Container(
           height: 1000,
           width:1500,
-          color: Colors.amber[100],
+          color: Colors.yellow[100],
           margin: EdgeInsets.all(20.0),
           padding: EdgeInsets.all(10.0),
           child: Row(

@@ -21,7 +21,7 @@ class _RoomTeacherState extends State<RoomTeacher> {
       body: Center(child: Container(
         height: 1000,
         width:1500,
-        color: Colors.amber[100],
+        color: Colors.yellowAccent[100],
         margin: EdgeInsets.all(20.0),
         padding: EdgeInsets.all(10.0),
         child: Row(

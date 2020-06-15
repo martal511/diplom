@@ -41,14 +41,13 @@ class _HomeState extends State<Home> {
         appBar: buildAppBar(context),
         body: Container(
             width: 2000,
-            height: 1000,
-            padding: EdgeInsets.all(40),
+            padding: EdgeInsets.all(20),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Expanded(
                   flex: 1,
-                  child: Container(margin: EdgeInsets.all(20.00) , child: Image.asset("mainimage.png")),
+                  child: Container(margin: EdgeInsets.all(20.00) , child: Image.network('https://firebasestorage.googleapis.com/v0/b/diplom-ff938.appspot.com/o/main%2Fmainimage.png?alt=media&token=0ccd9c80-78bf-4da7-84ad-ae7ddc6c7ce3')),
                 ),
                 Expanded(
                   flex: 2,
