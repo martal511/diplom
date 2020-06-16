@@ -38,16 +38,7 @@ class _RoomStudentState extends State<RoomStudent> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: Text(isReleaseVersion? userData['name'] : "имя студента", textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.indigo[800],
-                    fontSize: 32,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-              ),
+
               Expanded(
                 flex: 1,
                 child: classesColumn(context),
@@ -73,6 +64,16 @@ class _RoomStudentState extends State<RoomStudent> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Text(isReleaseVersion? userData['name'] : "имя студента", textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.indigo[800],
+                fontSize: 28,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
           Expanded(
             flex: 1,
             child:

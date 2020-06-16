@@ -30,7 +30,7 @@ class _RoomTeacherState extends State<RoomTeacher> {
           child: Container(
             height: 1000,
             width: 1500,
-            color: Colors.yellowAccent[100],
+            color: Colors.yellow[100],
             margin: EdgeInsets.all(20.0),
             padding: EdgeInsets.all(10.0),
             child: Row(
@@ -499,7 +499,7 @@ class _AddLectionWidgetState extends State<AddLectionWidget> {
         child: Column(
           children: <Widget>[
             Container(
-              width: 400,
+              width: 300,
               height: 40,
               padding: EdgeInsets.all(8),
               child: Text(
@@ -531,7 +531,7 @@ class _AddLectionWidgetState extends State<AddLectionWidget> {
               padding: EdgeInsets.all(8),
               child: TextFormField(
                 controller: nameController,
-                decoration: InputDecoration(hintText: "Введите тему урока"),
+                decoration: InputDecoration(hintText: "Введите тему лекции"),
               ),
             ),
             Container(
@@ -540,7 +540,7 @@ class _AddLectionWidgetState extends State<AddLectionWidget> {
               padding: EdgeInsets.all(8),
               child: TextFormField(
                 controller: textController,
-                decoration: InputDecoration(hintText: "Введите статус урока"),
+                decoration: InputDecoration(hintText: "Введите текст"),
               ),
             ),
             Container(
@@ -550,7 +550,7 @@ class _AddLectionWidgetState extends State<AddLectionWidget> {
               child: TextFormField(
                 controller: imageURLController,
                 decoration:
-                InputDecoration(hintText: "Введите домашнее задание"),
+                InputDecoration(hintText: "Введите ссылку на изображение"),
               ),
             ),
             FlatButton(
