@@ -30,7 +30,9 @@ DropdownButton<DocumentSnapshot> buildDropdownButton(BuildContext context ,{Docu
         } ));
       });
 }
-DropdownButton<DocumentSnapshot> buildDropdownStudentsButton(BuildContext context ,{DocumentSnapshot valueSnapshot}) {
+DropdownButton<DocumentSnapshot> buildDropdownStudentsButton(BuildContext context ,{DocumentSnapshot valueSnapshot, Function(DocumentSnapshot) function}) {
+
+
   return DropdownButton(
     focusColor: Colors.indigoAccent[100],
       hint: Text('Ученики', style: TextStyle(
@@ -39,7 +41,8 @@ DropdownButton<DocumentSnapshot> buildDropdownStudentsButton(BuildContext contex
           fontWeight: FontWeight.w500
       ),),
       elevation: 0,
-      value: valueSnapshot,
+     value: choosenStudent,
+
       items: studentsAllDataDocs.map((DocumentSnapshot value) {
         return DropdownMenuItem(
           value: value,
@@ -51,6 +54,8 @@ DropdownButton<DocumentSnapshot> buildDropdownStudentsButton(BuildContext contex
         );
       }).toList(),
       onChanged: (DocumentSnapshot value) {
+              choosenStudent=value;
+        function(value);
 
       });
 }

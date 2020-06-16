@@ -114,7 +114,7 @@ class _RoomStudentState extends State<RoomStudent> {
                                           .data()["themeName"].toString()), // Текст описания
                                     trailing: Icon(Icons.keyboard_arrow_right), // Иконка списка справа '>'
                                       onTap: () {
-                                          print('Для тебя есть интересное задание'); // Заглушка, где необходимо указать действие после клика
+                                          // Заглушка, где необходимо указать действие после клика
                                       },    )
                                 ],
                               ));

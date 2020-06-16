@@ -103,7 +103,7 @@ AppBar buildAppBar(BuildContext context, {DocumentSnapshot valueSnapshot}) {
                       }
                     });
                   }  else {
-                    Navigator.pushNamed(context, '/roomstudent');
+                    Navigator.pushNamed(context, '/roomteacher');
 
                   }
                 },
