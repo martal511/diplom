@@ -7,18 +7,26 @@ import 'package:flutter/material.dart';
 import '../../main.dart';
 
 class RoomStudent extends StatefulWidget {
+  DocumentSnapshot studentsAllDataDocs;
+  RoomStudent({this.studentsAllDataDocs});
   @override
   _RoomStudentState createState() => _RoomStudentState();
 }
 
 class _RoomStudentState extends State<RoomStudent> {
-  String _dropdownValue;
-  List <String> _dropdownValues = ["Алгоритмы", "Циклы", "Методы"];
+  Map<String, dynamic> roomstudentMap;
+
+  @override
+  void initState() {
+    var roomstudent = widget.studentsAllDataDocs.data();
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(context),
+        appBar: buildAppBar(context, valueSnapshot: widget.studentsAllDataDocs),
         body: Center(child:
         Container(
           height: 1000,
@@ -29,6 +37,16 @@ class _RoomStudentState extends State<RoomStudent> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: Text(roomstudentMap['name'], textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.indigo[800],
+                    fontSize: 32,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
               Expanded(
                 flex: 1,
                 child: classesColumn(context),
@@ -45,23 +63,27 @@ class _RoomStudentState extends State<RoomStudent> {
 
   Widget classesColumn(BuildContext context) {
     return Container(
-      decoration: BoxDecoration( color: Colors.indigo[50],
+      decoration: BoxDecoration( color: Colors.lightBlue[50],
         border: Border.all(
-        color: Colors.yellowAccent[700],
+        color: Colors.indigo[200],
         width: 4)),
       height: 1000,
       width:500,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(20.0),
-            child: Text("Занятия", style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.w500,
-                color: Colors.indigo[900])
+          Expanded(
+            flex: 1,
+            child:
+                  Text("Занятия", style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.indigo[900])
             ),
           ),
+
           Expanded(
+            flex: 8,
             child: Container(
               height:800,
               child: StreamBuilder(
@@ -78,26 +100,21 @@ class _RoomStudentState extends State<RoomStudent> {
                         itemCount: classesDataDocs.length,
                         itemBuilder: (context, item) {
                           return Container(
-                              margin: EdgeInsets.all(5.0),
-                              padding: EdgeInsets.all(5.0),
-                              decoration: BoxDecoration(border: Border.all()),
-                              height: 150,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  Text("Дата : " +
-                                      classesDataDocs[item]
-                                          .data()["data"]
-                                          .toString()),
-
-                                  Text("Тема : " +
-                                      classesDataDocs[item]
-                                          .data()["themeName"]),
-                                  Text("Домашнее задание : " +
-                                      classesDataDocs[item].data()["dz"]),
-                                  Text("Статус урока : " +
-                                      classesDataDocs[item]
-                                          .data()["status"]),
+                                  ListTile(
+                                    title: Text("Дата : " +
+                                        classesDataDocs[item]
+                                        .data()["data"]
+                                        .toString()), // Основной текст (название)
+                                   subtitle: Text("Тема : " +
+                                          classesDataDocs[item]
+                                          .data()["themeName"]), // Текст описания
+                                    trailing: Icon(Icons.keyboard_arrow_right), // Иконка списка справа '>'
+                                      onTap: () {
+                                          print('Для тебя есть интересное задание'); // Заглушка, где необходимо указать действие после клика
+                                      },    )
                                 ],
                               ));
                         });
@@ -118,17 +135,17 @@ class _RoomStudentState extends State<RoomStudent> {
   Widget studentsColumn(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.indigo[50],
+        color: Colors.lightBlue[50],
         border: Border.all(
-        color: Colors.yellowAccent[700],
-        width: 4),),
+        color: Colors.indigo[200],
+            width: 4),),
       height: 1000,
       width: 500,
       child: Column(
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(20.0),
-            child: Text("Итоги занятия ", style: TextStyle(
+            child: Text("Мой опыт", style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.w500,
               color: Colors.indigo[900],

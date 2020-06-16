@@ -13,8 +13,6 @@ class LectionPage extends StatefulWidget {
 class _LectionPageState extends State<LectionPage> {
   Map<String, dynamic> lectionMap;
 
-
-
   @override
   void initState() {
     lectionMap = widget.lectionData.data();

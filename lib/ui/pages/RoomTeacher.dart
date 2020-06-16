@@ -8,7 +8,11 @@ import 'package:flutter/material.dart';
 import '../../data.dart';
 import '../../main.dart';
 
+
+
 class RoomTeacher extends StatefulWidget {
+  DocumentSnapshot studentsAllDataDocs;
+  RoomTeacher({this.studentsAllDataDocs});
   @override
   _RoomTeacherState createState() => _RoomTeacherState();
 }
@@ -55,48 +59,8 @@ class _RoomTeacherState extends State<RoomTeacher> {
               color: Colors.indigo[900],
             ),),
             padding: EdgeInsets.all(20.0),
+          ),
 
-          ),
-          FlatButton(
-            onPressed: () {},
-            child: Text("Показать занятия всех"),
-          ),
-          FlatButton(
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  child: Dialog(
-                    child: Container(
-
-                      padding: EdgeInsets.all(8),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Row(
-                              children: <Widget>[
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                      hintText: "Введите email"),
-                                ),
-                                FlatButton(
-                                    onPressed: () {}, child: Icon(Icons.search))
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              child: Column(
-                                children: <Widget>[],
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ));
-            },
-            child: Text("Добавить"),
-          ),
 
           Expanded(
             child: Container(
@@ -124,13 +88,12 @@ class _RoomTeacherState extends State<RoomTeacher> {
                                           .toString()),
                                   Text("e-mail : " +
                                       studentsDataDocs[item].data()["email"]),
-
                                 ],
                               ));
                         });
                   } else {
                     return Container(
-                      child: Text(" нет уроков"),
+                      child: Text(" нет учеников"),
                     );
                   }
                 },
@@ -157,10 +120,7 @@ class _RoomTeacherState extends State<RoomTeacher> {
               color: Colors.indigo[900])
             ),
           ),
-          FlatButton(
-            onPressed: () {},
-            child: Text("Показать все занятия"),
-          ),
+
           FlatButton(
             onPressed: () {
               showDialog(
@@ -183,7 +143,7 @@ class _RoomTeacherState extends State<RoomTeacher> {
                               width: 400,
                               height: 40,
                               padding: EdgeInsets.all(8),
-                              child: Text("Добавление урока", textAlign: TextAlign.center, style: TextStyle(
+                              child: Text("Запланировать урок", textAlign: TextAlign.center, style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.indigo[900]
@@ -196,16 +156,7 @@ class _RoomTeacherState extends State<RoomTeacher> {
                               padding: EdgeInsets.all(8),
                               child: buildDropdownStudentsButton(context),
                             ),
-                            Container(
-                              width: 400,
-                              height: 40,
-                              padding: EdgeInsets.all(8),
-                              child: TextFormField(
-                                controller: themeController,
-                                decoration: InputDecoration(
-                                    hintText: "Введите тему урока"),
-                              ),
-                            ),
+
                             Container(
                               width: 400,
                               height: 40,
@@ -214,6 +165,16 @@ class _RoomTeacherState extends State<RoomTeacher> {
                                 controller: dateController,
                                 decoration: InputDecoration(
                                     hintText: "Введите дату урока"),
+                              ),
+                            ),
+                            Container(
+                              width: 400,
+                              height: 40,
+                              padding: EdgeInsets.all(8),
+                              child: TextFormField(
+                                controller: themeController,
+                                decoration: InputDecoration(
+                                    hintText: "Введите тему урока"),
                               ),
                             ),
                             Container(
@@ -343,3 +304,4 @@ class _RoomTeacherState extends State<RoomTeacher> {
 
 }
 }
+

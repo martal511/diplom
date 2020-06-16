@@ -1,3 +1,4 @@
+import 'package:diplom/ui/pages/RoomStudent.dart';
 import 'package:diplom/ui/pages/lectionPage.dart';
 import 'package:firebase/firestore.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,6 @@ DropdownButton<DocumentSnapshot> buildDropdownStudentsButton(BuildContext contex
         );
       }).toList(),
       onChanged: (DocumentSnapshot value) {
-        choosenStudent = value;
-        Navigator.of(context).pushNamed("/roomstudent");
+
       });
 }
