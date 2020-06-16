@@ -41,7 +41,7 @@ DropdownButton<DocumentSnapshot> buildDropdownStudentsButton(BuildContext contex
           fontWeight: FontWeight.w500
       ),),
       elevation: 0,
-     value: choosenStudent,
+     value: questionController,
 
       items: studentsAllDataDocs.map((DocumentSnapshot value) {
         return DropdownMenuItem(
@@ -54,7 +54,7 @@ DropdownButton<DocumentSnapshot> buildDropdownStudentsButton(BuildContext contex
         );
       }).toList(),
       onChanged: (DocumentSnapshot value) {
-              choosenStudent=value;
+              questionController=value;
         function(value);
 
       });

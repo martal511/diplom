@@ -1,4 +1,5 @@
 import 'package:diplom/ui/widgets/myAppBar.dart';
+import 'package:diplom/ui/widgets/storageUploadImageWidget.dart';
 import 'package:firebase/firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,11 +45,13 @@ class _LectionPageState extends State<LectionPage> {
                   color: Colors.indigo,
                 ),
               ),),
-            Container(padding: EdgeInsets.all(5.0),
-             height: 300,
-              width: 400,
-              child:Image.network(lectionMap['photoURL']
-              ),),
+            Center(
+              child: Container(padding: EdgeInsets.all(5.0),
+               height: 400,
+                width: 610,
+                child:UploadImageWidget(url: lectionMap['photoURL'], onlyShow: true,
+                ),),
+            ),
             Container( padding: EdgeInsets.all(5.0),
               child: Text(lectionMap['question'], textAlign: TextAlign.center,
                 style: TextStyle(
