@@ -101,6 +101,9 @@ class _RoomStudentState extends State<RoomStudent> {
                         itemCount: classesDataDocs.length,
                         itemBuilder: (context, item) {
                           return Container(
+                             margin: EdgeInsets.all(8.0),
+                              padding:EdgeInsets.all(8.0), 
+                              decoration: BoxDecoration( border: Border.all()),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: <Widget>[
@@ -112,10 +115,9 @@ class _RoomStudentState extends State<RoomStudent> {
                                    subtitle: Text("Тема : " +
                                           classesDataDocs[item]
                                           .data()["themeName"].toString()), // Текст описания
-                                    trailing: Icon(Icons.keyboard_arrow_right), // Иконка списка справа '>'
-                                      onTap: () {
-                                          // Заглушка, где необходимо указать действие после клика
-                                      },    )
+                                       ),
+
+                                  Container (child: Text("Домашнее задание : " + classesDataDocs[item].data()["dz"].toString()))
                                 ],
                               ));
                         });
