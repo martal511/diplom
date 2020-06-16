@@ -102,7 +102,7 @@ class _RoomStudentState extends State<RoomStudent> {
                         itemBuilder: (context, item) {
                           return Container(
                              margin: EdgeInsets.all(8.0),
-                              padding:EdgeInsets.all(8.0), 
+                              padding:EdgeInsets.all(8.0),
                               decoration: BoxDecoration( border: Border.all()),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -1,6 +1,7 @@
 
 import 'package:diplom/themes/colors.dart';
 import 'package:flutter/material.dart';
+import '../../main.dart';
 import 'MyCard.dart';
 import 'MyContainerNoPading.dart';
 
@@ -13,6 +14,12 @@ Widget profileContentColumn(BuildContext context,String profilePhotoUrl, {String
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
+        FlatButton (onPressed: () {
+          authService.signOut();
+          Navigator.pushNamed(context, "/");
+        },
+        child: Icon(Icons.exit_to_app) ,),
+
         Container(margin: EdgeInsets.all(20),
           width: 120.0,
           height: 120.0,
