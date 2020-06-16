@@ -18,7 +18,8 @@ class _RoomStudentState extends State<RoomStudent> {
 
   @override
   void initState() {
-    var roomstudent = widget.studentsAllDataDocs.data();
+
+    //var roomstudent = widget.studentsAllDataDocs.data();
     super.initState();
   }
 
@@ -26,7 +27,7 @@ class _RoomStudentState extends State<RoomStudent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(context, valueSnapshot: widget.studentsAllDataDocs),
+        appBar: buildAppBar(context),
         body: Center(child:
         Container(
           height: 1000,
@@ -39,7 +40,7 @@ class _RoomStudentState extends State<RoomStudent> {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                child: Text(roomstudentMap['name'], textAlign: TextAlign.center,
+                child: Text(isReleaseVersion? userData['name'] : "имя студента", textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.indigo[800],
                     fontSize: 32,
@@ -110,7 +111,7 @@ class _RoomStudentState extends State<RoomStudent> {
                                         .toString()), // Основной текст (название)
                                    subtitle: Text("Тема : " +
                                           classesDataDocs[item]
-                                          .data()["themeName"]), // Текст описания
+                                          .data()["themeName"].toString()), // Текст описания
                                     trailing: Icon(Icons.keyboard_arrow_right), // Иконка списка справа '>'
                                       onTap: () {
                                           print('Для тебя есть интересное задание'); // Заглушка, где необходимо указать действие после клика
@@ -289,7 +290,7 @@ class _RoomStudentState extends State<RoomStudent> {
                                           .data()["userComment"]
                                           .toString()),
                                   Text("Выполнение домашнего задания : " +
-                                      studentsDataDocs[item].data()["dsAnswer"]),
+                                      studentsDataDocs[item].data()["dsAnswer"].toString()),
 
                                 ],
                               ));
